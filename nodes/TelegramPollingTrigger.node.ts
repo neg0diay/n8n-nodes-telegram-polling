@@ -133,7 +133,7 @@ export async function pollOnce(args: {
 					allowedUpdates: args.allowedUpdates,
 					restrictChatIds: args.restrictChatIds,
 					restrictUserIds: args.restrictUserIds,
-			  });
+				});
 
 	return {
 		nextOffset,
@@ -361,7 +361,8 @@ export class TelegramPollingTrigger implements INodeType {
 		const getUpdates: TelegramGetUpdatesFn = async ({ body, signal }) =>
 			(await this.helpers.request({
 				method: 'post',
-				uri: `https://api.telegram.org/bot${credentials.accessToken}/getUpdates`,
+				// uri: `https://api.telegram.org/bot${credentials.accessToken}/getUpdates`,
+				uri: `https://${credentials.baseURL}/bot${credentials.accessToken}/getUpdates`,
 				body,
 				json: true,
 				timeout: 0,
