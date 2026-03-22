@@ -362,7 +362,7 @@ export class TelegramPollingTrigger implements INodeType {
 			(await this.helpers.request({
 				method: 'post',
 				// uri: `https://api.telegram.org/bot${credentials.accessToken}/getUpdates`,
-				uri: `https://${credentials.baseURL}/bot${credentials.accessToken}/getUpdates`,
+				uri: `${credentials.baseURL || 'https://api.telegram.org'}/bot${credentials.accessToken}/getUpdates`,
 				body,
 				json: true,
 				timeout: 0,
